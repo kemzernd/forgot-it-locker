@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Checkout | Forgot-It Locker</title>
+    <link rel="stylesheet" href="../css/student-form.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+  </head>
+  <body>
+    <!-- FIXED NAVBAR -->
+    <nav class="navbar">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+      <div class="navbar-container">
+        <!-- Left: Brand / Header -->
+        <a href="shop.html" class="nav-brand">Student Checkout</a>
+
+        <!-- Right: Navigation Controls -->
+        <div class="nav-right">
+          <!-- Burger Icon Label -->
+          <label for="nav-toggle" class="burger-btn" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </label>
+
+          <!-- Drawer Menu (Slides from Right to Left) -->
+          <div class="nav-links">
+            <label
+              for="nav-toggle"
+              class="close-menu-btn"
+              aria-label="Close menu"
+              >&times;</label
+            >
+
+            <a href="shop.html">Shop</a>
+            <a href="Cart.html">Cart</a>
+            <a href="#">Admin</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CHECKOUT FORM CONTAINER -->
+    <main class="checkout-wrapper">
+      <h1>Student Checkout Information</h1>
+
+      <form id="checkout-form" class="checkout-form">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input
+            type="text"
+            id="fullname"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="studentid">Student ID</label>
+          <input
+            type="text"
+            id="studentid"
+            placeholder="e.g., 2026-00001"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="course-section">Course/Section</label>
+          <input
+            type="text"
+            id="course-section"
+            placeholder="ex. IT-2E"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="pickup-time">Time of Pick Up</label>
+          <input type="datetime-local" id="pickup-time" required />
+          <small id="rent-notice" class="notice-text" style="display: none">
+            ⚠️ <strong>Note:</strong> Rented items must be returned within 1 day
+            (24 hours) from pick up time.
+          </small>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Order</button>
+      </form>
+    </main>
+
+    <script src="../js/notify.js"></script>
+    <script src="../js/student-form.js"></script>
+  </body>
+</html>

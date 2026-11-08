@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - Forgot-It Locker</title>
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <div class="login-wrapper">
+      <div class="login-card">
+        <!-- Brand Header -->
+        <h2 class="brand-title">Forgot-It Locker</h2>
+        <h1 class="page-title">Admin Login</h1>
+
+        <!-- Prototype Notice -->
+        <div class="prototype-notice">
+          <p class="notice-badge">Prototype Mode</p>
+          <p class="notice-details">
+            Use demo credentials below:<br />
+            <strong>Username:</strong> admin<br />
+            <strong>Password:</strong> admin123
+          </p>
+        </div>
+
+        <!-- Error Message Alert -->
+        <div id="error-message" class="error-alert" style="display: none">
+          Invalid username or password
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter username"
+              required
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              required
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button type="submit" id="login-btn">Sign In</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/login.js"></script>
+  </body>
+</html>

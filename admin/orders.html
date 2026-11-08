@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders Management | Forgot-It Locker</title>
+    <link rel="stylesheet" href="../css/orders.css" />
+  </head>
+
+  <body>
+    <div class="layout-wrapper">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <h2 class="sidebar-brand">Forgot-It Locker</h2>
+        <nav class="sidebar-nav">
+          <a href="/admin/inventory.html">Inventory</a>
+          <a href="/admin/orders.html" class="active">Orders</a>
+          <a href="/admin/scanner.html">QR Scanner</a>
+          <a href="../index.html">Exit</a>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTAINER -->
+      <main class="app-container">
+        <!-- HEADER CONTAINER -->
+        <div class="header-container">
+          <h1>Orders Management</h1>
+          <p class="subtitle">Monitor student orders, rentals, and returns.</p>
+        </div>
+
+        <!-- ORDERS TABLE -->
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Unique ID</th>
+                <th>Student Name</th>
+                <th>Item(s) & Qty</th>
+                <th>Pick Up Time</th>
+                <th>Retrieval Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body">
+              <!-- Dynamically populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/orders.js"></script>
+  </body>
+</html>

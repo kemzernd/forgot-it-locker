@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaction QR | Forgot-It Locker</title>
+    <link rel="stylesheet" href="../css/success.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+    <!-- QR Code Generator Library CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  </head>
+  <body>
+    <!-- FIXED NAVBAR -->
+    <nav class="navbar">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+      <div class="navbar-container">
+        <!-- Left: Brand / Header -->
+        <a href="shop.html" class="nav-brand">Transaction Success</a>
+
+        <!-- Right: Navigation Controls -->
+        <div class="nav-right">
+          <!-- Burger Icon Label -->
+          <label for="nav-toggle" class="burger-btn" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </label>
+
+          <!-- Drawer Menu (Slides from Right to Left) -->
+          <div class="nav-links">
+            <label
+              for="nav-toggle"
+              class="close-menu-btn"
+              aria-label="Close menu"
+              >&times;</label
+            >
+
+            <a href="shop.html">Shop</a>
+            <a href="Cart.html">Cart</a>
+            <a href="/admin/login.html">Admin</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- SUCCESS CONTENT CONTAINER -->
+    <main class="success-wrapper">
+      <div class="gcash-success-card">
+        <!-- Note at the top of the QR code -->
+        <p class="qr-notice-note">
+          show the qr code to the registrar to claim your package
+        </p>
+
+        <!-- Soft green background QR Wrapper -->
+        <div class="qr-display-box">
+          <div class="qr-content-wrapper">
+            <div id="qrcode-container"></div>
+
+            <!-- 2 Small Buttons aligned with the right-bottom side of the QR code -->
+            <div class="qr-actions-row">
+              <button
+                id="download-btn"
+                class="small-action-btn download-btn"
+                title="Download QR Code"
+              >
+                Download QR
+              </button>
+              <button
+                id="cancel-btn"
+                class="small-action-btn cancel-btn"
+                title="Cancel Transaction"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction Details Summary -->
+        <div class="tx-details-box" id="tx-details-box">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/notify.js"></script>
+    <script src="../js/success.js"></script>
+  </body>
+</html>

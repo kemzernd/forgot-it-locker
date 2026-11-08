@@ -1,0 +1,635 @@
+/* =========================================
+   RESET & GLOBAL VARIABLES
+   ========================================= */
+:root {
+  --success-color: #10b981; /* Green */
+  --text-main: #000000; /* Black */
+  --text-muted: #6b7280; /* Gray */
+  --bg-body: #f9fafb;
+  --bg-card: #ffffff; /* White */
+  --border-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding: 90px 16px 32px 16px;
+}
+
+/* =========================================
+   FIXED NAVBAR
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.search-container {
+  max-width: 350px;
+  width: 100%;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  border-radius: 5px;
+  transition: border-color 0.2s;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: var(--text-main);
+}
+
+/* Desktop Nav Links */
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--success-color);
+}
+
+.burger-btn,
+.close-menu-btn {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE NAVBAR (Laptop / Tablet / Mobile Off-Canvas Drawer)
+   ========================================= */
+@media (max-width: 1024px) {
+  .burger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .burger-btn .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-main);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Slide-in Drawer Menu (80% Width, 100% Height) */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100vh;
+    background-color: var(--bg-card);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 72px 28px 28px;
+    gap: 24px;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+    z-index: 1002;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1.15rem;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--success-color);
+  }
+
+  .close-menu-btn {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-main);
+    cursor: pointer;
+  }
+}
+
+/* =========================================
+   SHOP GRID (Mobile-First 2 Columns)
+   ========================================= */
+.shop-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shop-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* =========================================
+   CARD STYLING
+   ========================================= */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+  padding: 8px;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-image-wrapper {
+  width: 100%;
+  height: 140px;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-image-text {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 4px 0;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.card-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price-qty-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 8px;
+}
+
+.card-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.qty-input {
+  width: 48px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.qty-input:focus {
+  outline: none;
+  border-color: var(--text-main);
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  display: block;
+  background: var(--text-main);
+  color: var(--bg-card);
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: #333333;
+}
+
+/* =========================================
+   RESPONSIVE GRID ADJUSTMENTS
+   ========================================= */
+@media (max-width: 400px) {
+  .navbar-container {
+    padding: 10px 12px;
+  }
+  .search-container {
+    max-width: 150px;
+  }
+}
+
+/* Tablets (3 Columns) */
+@media (min-width: 640px) {
+  .shop-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .card {
+    padding: 12px;
+  }
+  .card-image-wrapper {
+    height: 180px;
+  }
+  .card-title {
+    font-size: 1.15rem;
+  }
+  .card-price,
+  .card-desc {
+    font-size: 0.9rem;
+  }
+  .add-to-cart-btn {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  .qty-input {
+    width: 60px;
+    padding: 6px;
+  }
+}
+
+/* Desktops (4 Columns) */
+@media (min-width: 1025px) {
+  .shop-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .card-image-wrapper {
+    height: 220px;
+  }
+  .card-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* =========================================
+   NAVBAR FILTERS (category + transaction type selects, narrower search)
+   ========================================= */
+.nav-filters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.filter-select,
+.search-container input {
+  height: 40px;
+}
+
+.filter-select {
+  width: 170px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--text-main);
+}
+
+/* Search bar made 50% narrower (350px -> 175px) */
+.search-container {
+  max-width: 175px;
+}
+
+@media (max-width: 767px) {
+  .navbar-container {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  /* Let brand, burger and filters line up as one wrapping row */
+  .nav-right {
+    display: contents;
+  }
+
+  .nav-brand {
+    order: 1;
+  }
+
+  .burger-btn {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .nav-filters {
+    order: 3;
+    width: 100%;
+  }
+
+  .filter-select,
+  .search-container {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+  }
+
+  .filter-select {
+    flex-grow: 1.4;
+    padding: 0 6px;
+    font-size: 0.8rem;
+  }
+
+  .search-container input {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+
+  body {
+    padding-top: 135px;
+  }
+}
+
+/* =========================================
+   CATEGORY SECTIONS
+   ========================================= */
+.shop-container {
+  display: block;
+}
+
+.category-section {
+  margin-bottom: 28px;
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* =========================================
+   SMALLER CARDS (scale controlled by --card-scale)
+   Change 0.8 to any number to resize all cards at once.
+   ========================================= */
+:root {
+  --card-scale: 0.8;
+  --card-w: 165px;
+  --card-img-h: 140px;
+  --card-pad: 8px;
+  --card-title: 1rem;
+  --card-text: 0.8rem;
+  --card-price: 0.9rem;
+  --card-btn-pad: 10px;
+  --card-btn-font: 0.85rem;
+  --qty-input-w: 40px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --card-w: 220px;
+    --card-img-h: 180px;
+    --card-pad: 12px;
+    --card-title: 1.15rem;
+    --card-text: 0.9rem;
+    --card-btn-pad: 12px;
+    --card-btn-font: 0.9rem;
+    --qty-input-w: 48px;
+  }
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --card-w: 280px;
+    --card-img-h: 220px;
+    --card-title: 1.25rem;
+  }
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    calc(var(--card-w) * var(--card-scale))
+  );
+  gap: calc(16px * var(--card-scale));
+  justify-content: start;
+}
+
+@media (max-width: 639px) {
+  .category-grid {
+    justify-content: center;
+  }
+}
+
+.card {
+  padding: calc(var(--card-pad) * var(--card-scale));
+}
+
+.card-image-wrapper {
+  height: calc(var(--card-img-h) * var(--card-scale));
+  margin-bottom: calc(8px * var(--card-scale));
+}
+
+.card-title {
+  font-size: calc(var(--card-title) * var(--card-scale));
+}
+
+.card-desc {
+  font-size: calc(var(--card-text) * var(--card-scale));
+  margin-bottom: calc(4px * var(--card-scale));
+}
+
+.card-stock {
+  font-size: calc(var(--card-text) * var(--card-scale));
+  color: var(--text-muted);
+  margin-bottom: calc(8px * var(--card-scale));
+}
+
+.card-price {
+  font-size: calc(var(--card-price) * var(--card-scale));
+}
+
+.add-to-cart-btn {
+  padding: calc(var(--card-btn-pad) * var(--card-scale));
+  font-size: calc(var(--card-btn-font) * var(--card-scale));
+}
+
+/* Out of stock: faded and not clickable */
+.card.out-of-stock {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* =========================================
+   QUANTITY CONTROL: [ - ] [ number ] [ + ]
+   ========================================= */
+.price-qty-row {
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: calc(8px * var(--card-scale));
+}
+
+.qty-control {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.qty-btn {
+  width: calc(30px * var(--card-scale));
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-size: calc(1rem * var(--card-scale));
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+  background: var(--border-color);
+}
+
+.qty-btn:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.qty-btn:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.qty-control .qty-input {
+  width: var(--qty-input-w);
+  padding: 3px 0;
+  font-size: calc(0.85rem * var(--card-scale));
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.qty-control .qty-input::-webkit-outer-spin-button,
+.qty-control .qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

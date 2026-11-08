@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forgot-It Locker | Campus Gear Rental & Pick-Up</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/notify.css" />
+  </head>
+  <body>
+    <!-- FIXED NAVBAR -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <!-- Left: Brand -->
+        <a href="/index.html" class="nav-brand">Forgot-It Locker</a>
+
+        <!-- Right: Burger Button + Drawer Menu -->
+        <div class="nav-right">
+          <!-- Burger Icon (Laptop / Tablet / Mobile) -->
+          <button class="burger-btn" id="burger-btn" aria-label="Open menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+
+          <!-- Overlay Backdrop (inside navbar so z-index works correctly) -->
+          <div class="nav-overlay" id="nav-overlay"></div>
+
+          <!-- Drawer Menu (40% width, 100% height off-canvas) -->
+          <div class="nav-links" id="nav-links">
+            <button
+              class="close-menu-btn"
+              id="close-menu-btn"
+              aria-label="Close menu"
+            >
+              &times;
+            </button>
+            <a href="/index.html" class="active">Home</a>
+            <a href="/student/shop.html">Items</a>
+            <a href="/student/Cart.html">Cart</a>
+            <a href="/admin/login.html">Admin</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="hero-badge">Campus Automated Locker System</span>
+          <h1 class="hero-title">
+            Forgot your essentials? We’ve got you covered.
+          </h1>
+          <p class="hero-description">
+            Reserve or buy essential school equipment, lab gear, and supplies
+            instantly. Pick up your items hassle-free using standard QR
+            verification at the campus registrar locker. No account needed.
+          </p>
+          <div class="hero-actions">
+            <a href="/student/shop.html" class="btn-primary"
+              >Browse Shop & Rent</a
+            >
+          </div>
+        </div>
+
+        <!-- DYNAMIC VECTOR ILLUSTRATION CONTAINER -->
+        <div class="hero-visual">
+          <div class="locker-illustration">
+            <div class="locker-header">
+              <span class="locker-status">SYSTEM READY</span>
+              <span class="locker-id">LOCKER #04</span>
+            </div>
+            <div class="locker-grid">
+              <div class="locker-door door-active">
+                <span class="door-num">01</span>
+                <span class="door-status">AVAILABLE</span>
+              </div>
+              <div class="locker-door">
+                <span class="door-num">02</span>
+                <span class="door-status">OCCUPIED</span>
+              </div>
+              <div class="locker-door">
+                <span class="door-num">03</span>
+                <span class="door-status">OCCUPIED</span>
+              </div>
+              <div class="locker-door door-active">
+                <span class="door-num">04</span>
+                <span class="door-status">AVAILABLE</span>
+              </div>
+            </div>
+            <div class="locker-scanner-mock">
+              <div class="scanner-frame">
+                <div class="scanner-beam"></div>
+                <div class="scanner-icon">QR</div>
+              </div>
+              <p class="scanner-label">Scan Verification Badge</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="steps-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>Get what you need in four simple, automated steps.</p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">🛒</div>
+            <h3>Order or Rent</h3>
+            <p>
+              Select your required items from the shop, set your pick-up
+              schedule, and submit your checkout request.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">📱</div>
+            <h3>Get QR Code</h3>
+            <p>
+              Instantly receive your non-reusable unique 6-digit transaction ID
+              and encrypted QR verification pass.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">📷</div>
+            <h3>Show to Registrar</h3>
+            <p>
+              Visit the locker station and present your QR code pass or image to
+              the scanner terminal for verification.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <div class="step-icon">📦</div>
+            <h3>Claim Package</h3>
+            <p>
+              Your order status updates to Claimed/Rented automatically and your
+              items are handed over right away.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <p class="footer-brand">Forgot-It Locker</p>
+        <p class="footer-notice">
+          ⚠️ <strong>Prototype Note:</strong> This application is a front-end
+          functional prototype operating exclusively on local browser storage
+          (`localStorage`). No external databases or payment gateways are
+          connected.
+        </p>
+      </div>
+    </footer>
+
+    <!-- SHARED NOTIFICATIONS + CART BADGE -->
+    <script src="/js/notify.js"></script>
+
+    <!-- NAVBAR SCRIPT -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const burgerBtn = document.getElementById("burger-btn");
+        const closeBtn = document.getElementById("close-menu-btn");
+        const navLinks = document.getElementById("nav-links");
+        const navOverlay = document.getElementById("nav-overlay");
+
+        function openMenu() {
+          navLinks.classList.add("active");
+          navOverlay.classList.add("active");
+          document.body.classList.add("menu-open");
+        }
+
+        function closeMenu() {
+          navLinks.classList.remove("active");
+          navOverlay.classList.remove("active");
+          document.body.classList.remove("menu-open");
+        }
+
+        burgerBtn.addEventListener("click", openMenu);
+        closeBtn.addEventListener("click", closeMenu);
+        navOverlay.addEventListener("click", closeMenu);
+
+        // Close when a menu link is tapped
+        navLinks.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+
+        // Close with Escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeMenu();
+        });
+
+        // Reset menu state when resizing back to desktop
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 1024) closeMenu();
+        });
+      });
+    </script>
+  </body>
+</html>

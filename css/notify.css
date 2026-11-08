@@ -1,0 +1,100 @@
+/* =========================================
+   TOAST NOTIFICATIONS (right side of page)
+   Green text + border = success, red = error
+   ========================================= */
+.toast-container {
+  position: fixed;
+  top: 84px;
+  right: 16px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: pre-line;
+  word-break: break-word;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  animation: toastIn 0.25s ease-out;
+}
+
+.toast-success {
+  color: #059669;
+  border-color: #10b981;
+}
+
+.toast-error {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.toast.toast-hide {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================================
+   CART NAV BADGE (green circle, top-right of "Cart")
+   ========================================= */
+.cart-link-text {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -9px;
+  right: -18px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background-color: #10b981;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 17px;
+  text-align: center;
+}
+
+.cart-badge[hidden] {
+  display: none;
+}

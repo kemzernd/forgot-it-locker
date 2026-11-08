@@ -1,0 +1,512 @@
+/* =========================================
+   RESET & GLOBAL VARIABLES
+   ========================================= */
+:root {
+  --primary-color: #4f46e5;
+  --danger-color: #ef4444;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --rent-color: #8b5cf6;
+  --text-main: #000000;
+  --text-muted: #6b7280;
+  --bg-body: #f3f4f6;
+  --bg-card: #ffffff;
+  --border-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.5;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =========================================
+   LAYOUT: SIDEBAR & MAIN CONTAINER
+   ========================================= */
+.layout-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid var(--border-color);
+  padding: 32px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-brand {
+  color: var(--text-main);
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 40px;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-left: 10px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 16px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active,
+.sidebar-nav a:focus {
+  background-color: rgb(224, 224, 224);
+  color: #000000;
+}
+
+.app-container {
+  flex: 1;
+  padding: 40px;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   HEADER LAYOUT (MATCHING ORDERS PAGE)
+   ========================================= */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* =========================================
+   EDITOR SECTION (Form + Card)
+   ========================================= */
+.editor-section {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+/* =========================================
+   FORM STYLING
+   ========================================= */
+#item-form {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  gap: 16px;
+  flex: 1;
+  min-width: 320px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+input[type="file"] {
+  padding: 9px 16px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: var(--bg-body);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: auto;
+}
+
+#clear-btn {
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#clear-btn:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+#submit-btn {
+  background-color: var(--text-main);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 24px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#submit-btn:hover {
+  background-color: #373938;
+}
+
+/* =========================================
+   CARD SIMULATION PREVIEW
+   ========================================= */
+.card-preview {
+  width: 320px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+}
+
+.card-image-wrapper {
+  width: 100%;
+  flex-grow: 1;
+  min-height: 180px;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+#preview-placeholder {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.card-details h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.card-details p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.card-details .preview-price {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
+}
+
+.card-preview .add-to-cart-btn {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #000000;
+  color: #ffffff;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+}
+
+.card-preview .add-to-cart-btn:hover {
+  background: #333333;
+}
+
+/* =========================================
+   TABLE STYLING (Matching Orders)
+   ========================================= */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 900px;
+}
+
+thead {
+  background-color: #f8fafc;
+  border-bottom: 2px solid var(--border-color);
+}
+
+th {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding: 16px;
+  text-align: left;
+}
+
+td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+td img,
+td [alt="item"] {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  background-color: #e5e7eb;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: var(--text-muted);
+  border-radius: 4px;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.action-btn:hover {
+  background: var(--bg-body);
+  color: var(--text-main);
+}
+
+/* =========================================
+   ACTION MENU (Contextual Menu)
+   ========================================= */
+.action-menu {
+  display: none;
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  flex-direction: column;
+  min-width: 130px;
+  z-index: 1000;
+  padding: 4px 0;
+}
+
+.action-menu.active {
+  display: flex;
+  animation: popInRight 0.15s ease-out;
+  transform-origin: top left;
+}
+
+.action-menu button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.action-menu button:hover {
+  background-color: #f3f4f6;
+}
+
+.action-menu #delete-btn {
+  color: var(--danger-color);
+}
+
+.action-menu #delete-btn:hover {
+  background-color: #fef2f2;
+}
+
+.action-menu #cancel-action-btn {
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   ANIMATIONS & RESPONSIVE
+   ========================================= */
+@keyframes popInRight {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .layout-wrapper {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .sidebar-brand {
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-preview {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   CATEGORY / TRANSACTION TYPE SELECTS (match inputs)
+   ========================================= */
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* =========================================
+   INVENTORY TABLE: more columns + stock status colors
+   ========================================= */
+.inventory-table {
+  min-width: 1100px;
+}
+
+.stock-low {
+  color: var(--danger-color);
+}
+
+.stock-sufficient {
+  color: var(--success-color);
+}
