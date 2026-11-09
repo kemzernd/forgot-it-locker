@@ -500,7 +500,7 @@ select:focus {
    INVENTORY TABLE: more columns + stock status colors
    ========================================= */
 .inventory-table {
-  min-width: 1100px;
+  min-width: 900px;
 }
 
 .stock-low {
@@ -509,4 +509,87 @@ select:focus {
 
 .stock-sufficient {
   color: var(--success-color);
+}
+
+/* =========================================
+   INVENTORY NAVBAR (heading + filters, stays at the top while scrolling)
+   ========================================= */
+.inventory-navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  box-shadow: var(--shadow-md);
+}
+
+.inventory-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.inventory-filters .filter-select,
+.inventory-filters .filter-search {
+  width: 150px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--bg-body);
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.inventory-filters .filter-select {
+  cursor: pointer;
+}
+
+.inventory-filters #type-filter {
+  width: 168px;
+}
+
+.inventory-filters .filter-search {
+  width: 135px;
+}
+
+.inventory-filters .filter-select:focus,
+.inventory-filters .filter-search:focus {
+  outline: none;
+  border-color: var(--text-main);
+  background-color: #ffffff;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .inventory-navbar {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 767px) {
+  .inventory-navbar {
+    padding: 16px;
+  }
+
+  .inventory-filters {
+    width: 100%;
+  }
+
+  .inventory-filters .filter-select,
+  .inventory-filters #type-filter,
+  .inventory-filters .filter-search {
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 0;
+  }
 }

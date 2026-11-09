@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="/js/sidebar-init.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR Scanner | Forgot-It Locker</title>
     <link rel="stylesheet" href="/css/orders.css" />
     <link rel="stylesheet" href="/css/notify.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
     <!-- HTML5-QRCode Library CDN (pinned version) -->
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
   </head>
@@ -14,14 +16,56 @@
     <div class="layout-wrapper">
       <!-- SIDEBAR -->
       <aside class="sidebar">
-        <h2 class="sidebar-brand">Forgot-It Locker</h2>
+        <div class="sidebar-header">
+          <h2 class="sidebar-brand">
+            <span class="sidebar-label">Forgot-It Locker</span>
+          </h2>
+          <button
+            type="button"
+            id="sidebar-collapse-btn"
+            class="sidebar-toggle"
+            aria-label="Retract sidebar"
+          >
+            &lt;
+          </button>
+          <button
+            type="button"
+            id="sidebar-expand-btn"
+            class="sidebar-toggle"
+            aria-label="Expand sidebar"
+          >
+            &gt;
+          </button>
+        </div>
         <nav class="sidebar-nav">
-          <a href="/admin/inventory.html">Inventory</a>
-          <a href="/admin/orders.html">Orders</a>
-          <a href="/admin/scanner.html" class="active">QR Scanner</a>
-          <a href="/index.html">Exit</a>
+          <a href="/admin/inventory.html"
+            ><img
+              src="/images/inventory.png"
+              alt=""
+              class="sidebar-icon"
+            /><span class="sidebar-label">Inventory</span></a
+          >
+          <a href="/admin/orders.html"
+            ><img src="/images/orders.png" alt="" class="sidebar-icon" /><span
+              class="sidebar-label"
+              >Orders</span
+            ></a
+          >
+          <a href="/admin/scanner.html" class="active"
+            ><img src="/images/scanner.png" alt="" class="sidebar-icon" /><span
+              class="sidebar-label"
+              >QR Scanner</span
+            ></a
+          >
+          <a href="/index.html"
+            ><img src="/images/exit.png" alt="" class="sidebar-icon" /><span
+              class="sidebar-label"
+              >Exit</span
+            ></a
+          >
         </nav>
       </aside>
+      <script src="/js/sidebar.js"></script>
 
       <!-- MAIN CONTAINER -->
       <main class="app-container">

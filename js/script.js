@@ -199,10 +199,32 @@ form.addEventListener("submit", function (event) {
 // ====================================
 function displayItems() {
   let output = "";
-  items.forEach(function (item) {
+
+  // Apply the navbar filters (category, transaction type, search by name)
+  let searchTerm = document.getElementById("search-input").value.toLowerCase();
+  let categoryValue = document.getElementById("category-filter").value;
+  let typeValue = document.getElementById("type-filter").value;
+
+  let visibleItems = items.filter(function (item) {
+    return (
+      item.name.toLowerCase().includes(searchTerm) &&
+      (categoryValue === "" || item.category === categoryValue) &&
+      (typeValue === "" || item.type === typeValue)
+    );
+  });
+
+  if (visibleItems.length === 0) {
+    itemList.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No items found.</td></tr>`;
+    return;
+  }
+
+  visibleItems.forEach(function (item) {
     // Stock status: 10 or below = Low (red), 11 or more = Sufficient (green)
     let isLow = item.quantity <= 10;
-    let statusText = isLow ? "Low" : "Sufficient";
+    let statusText =
+      item.quantity === 0 ? "Out of stock"
+      : isLow ? "Low"
+      : "Sufficient";
     let statusClass = isLow ? "stock-low" : "stock-sufficient";
 
     output += `
@@ -215,8 +237,6 @@ function displayItems() {
         <td>${item.description}</td>
         <td>${item.quantity}</td>
         <td>₱${item.price.toFixed(2)}</td>
-        <td>${item.category || "—"}</td>
-        <td>${item.type || "—"}</td>
         <td class="${statusClass}">${statusText}</td>
         <td>
           <button class="action-btn" onclick="toggleActionMenu(event, ${item.id})">⋮</button>
@@ -226,6 +246,11 @@ function displayItems() {
   });
   itemList.innerHTML = output;
 }
+
+["search-input", "category-filter", "type-filter"].forEach(function (id) {
+  let control = document.getElementById(id);
+  control.addEventListener(id === "search-input" ? "input" : "change", displayItems);
+});
 
 // ====================================
 // 6. TOGGLE ACTION MENU (Right Top Aligned)

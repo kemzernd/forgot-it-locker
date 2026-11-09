@@ -1,0 +1,133 @@
+/* =========================================
+   COLLAPSIBLE SIDEBAR (inventory, orders, scanner)
+   ========================================= */
+.sidebar {
+  overflow: hidden;
+  transition:
+    width 0.25s ease,
+    padding 0.25s ease;
+}
+
+/* Heading row: icon + title + toggle button */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 40px 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header .sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0;
+  line-height: 1.2;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-label {
+  white-space: nowrap;
+}
+
+.sidebar-brand .sidebar-label {
+  white-space: normal;
+}
+
+/* < and > buttons: no border, noticeable grey background */
+.sidebar-toggle {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(224, 224, 224);
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+/* Only one toggle button shows at a time (set by the state class on <html>) */
+.sidebar-collapsed #sidebar-collapse-btn,
+html:not(.sidebar-collapsed) #sidebar-expand-btn {
+  display: none;
+}
+
+/* Retracted sidebar: 50% of the 260px width = 130px, icons only */
+@media (min-width: 901px) {
+  .sidebar-collapsed .sidebar {
+    width: 130px;
+    padding: 32px 10px;
+  }
+
+  .sidebar-collapsed .sidebar-header {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 24px;
+  }
+
+  .sidebar-collapsed .sidebar-label,
+  .sidebar-collapsed .sidebar-no-icon {
+    display: none;
+  }
+
+  .sidebar-collapsed .sidebar-brand {
+    justify-content: center;
+  }
+
+  .sidebar-collapsed .sidebar-nav a {
+    justify-content: center;
+    padding: 12px 0;
+  }
+}
+
+/* Small screens: the sidebar is already a top bar, so no toggle */
+@media (max-width: 900px) {
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .sidebar-header {
+    margin: 0 0 20px;
+  }
+
+  .sidebar-nav a {
+    padding: 12px 16px;
+  }
+}
+
+/* Sidebar stays perfectly still while the page is scrolled */
+@media (min-width: 901px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
